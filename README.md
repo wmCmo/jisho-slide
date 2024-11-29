@@ -9,3 +9,5 @@
 - [ ] Options for different [Zen fonts](https://fonts.googleblog.com/2021/10/say-hello-to-our-big-new-japanese.html)
 - [ ] Togglable Furigana
 - [ ] Togglable word meaning 
+- [ ] Start stop button
+- [ ] Mobile support
