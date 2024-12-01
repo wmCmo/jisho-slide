@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Words Slides</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="build.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Zen+Kaku+Gothic+Antique&family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap"
         rel="stylesheet">
+    <link rel="shortcut icon"
+        href="https://raw.githubusercontent.com/microsoft/fluentui-emoji/refs/heads/main/assets/Blue%20book/3D/blue_book_3d.png"
+        type="image/x-icon">
 </head>
 
-<body>
-    <div id="root" class="inter-medium">
-        <div id="display" class="display zen-old-mincho-black" style="text-align: center">
-            言語
+<body class="bg-coarse-wool text-only-olive h-full">
+    <div id="root" class="flex flex-col items-center justify-center h-full">
+        <div id="display" class="display transition-opacity duration-1000">
+            <div id="furigana" class="font-util font-normal text-center text-7xl tracking-[0.5em] text-steadfast">
+                げんご
+            </div>
+            <div id="kanji" class="font-display font-black text-center text-display text-only-olive">
+                言語
+            </div>
+            <hr class="mb-8 border-steadfast">
+            <div class="flex gap-16 items-center text-left">
+                <a id="jisho-button" class="px-8 py-4 bg-river-styx rounded-lg hover:text-battery-charged-blue hover:font-semibold transition duration-300 ease-in-out" role="button"
+                    href="https://jisho.org/search/言語" target="_blank">Open
+                    Jisho.org</a>
+                <div id="details" class="font-mono text-only-olive">
+                    <ol class="list-decimal marker:text-battery-charged-blue">
+                        <li>language​</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-        <a id="jisho-button" class="button-31" role="button" href="https://jisho.org/search/言語" target="_blank">Open
-            Jisho.org</a>
     </div>
     <script type="module" src="./script.js"></script>
 </body>
