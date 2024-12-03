@@ -4,7 +4,7 @@
 - Uses `dev` theme from [monkeytype](https://monkeytype.com/).
 
 ### Future Ideas
-- [ ] Options for different JLPT levels
+- [X] Options for different JLPT levels
 - [ ] Options for slide speed
 - [ ] Options for different [Zen fonts](https://fonts.googleblog.com/2021/10/say-hello-to-our-big-new-japanese.html)
 - [ ] Togglable Furigana
