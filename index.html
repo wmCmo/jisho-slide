@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="A minimal slide show of JLPT-based Japanese words in Kanji." />
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/microsoft/fluentui-emoji/refs/heads/main/assets/Blue%20book/3D/blue_book_3d.png" />
+    <meta property="og:url" content="https://wmcmo.github.io/jisho-slide" />
+    <meta property="og:type" content="website" />
+
     <title>Words Slides</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Zen+Kaku+Gothic+Antique&family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap"
         rel="stylesheet">
+    <link rel="shortcut icon"
+        href="https://raw.githubusercontent.com/microsoft/fluentui-emoji/refs/heads/main/assets/Blue%20book/3D/blue_book_3d.png"
+        type="image/x-icon">
 </head>
 
-<body>
-    <div id="root" class="inter-medium">
-        <div id="display" class="display zen-old-mincho-black" style="text-align: center">
-            言語
-        </div>
-        <a id="jisho-button" class="button-31" role="button" href="https://jisho.org/search/言語" target="_blank">Open
-            Jisho.org</a>
-    </div>
-    <script type="module" src="./script.js"></script>
+<body class="bg-coarse-wool text-only-olive h-full">
+    <div id="root" class="flex flex-col items-center justify-center h-full"></div>
+    <script type="module" src="./src/main.jsx"></script>
 </body>
 
 </html>
