@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slider {
+    writing-mode: vertical-lr;
+    direction: rtl;
+    -webkit-appearance: none;
+    background: #4B5975;
+    width: 5px;
+    border-radius: 100px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #23A9D5;
+    cursor: pointer;
+    border-radius: 100px;
+}

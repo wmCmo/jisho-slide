@@ -1,56 +1,100 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Level from "./Level";
+import Pause from '/pause.svg';
+import Play from '/play.svg';
+import Slider from "./Slider";
 
 function App() {
 	const [level, setLevel] = useState('n1');
-	const [data, setData] = useState([])
-	const [show, setShow] = useState(true)
-	const [play, setPlay] = useState(true)
+	const [data, setData] = useState([]);
+	const [show, setShow] = useState(true);
+	const [play, setPlay] = useState(true);
+	const [speed, setSpeed] = useState(4);
 	const [tango, setTango] = useState({
 		word: '言語',
 		reading: 'げんご',
 		senses: [["language"]]
-	})
-	useEffect(() => {
+	});
 
+	const handlePlay = () => {
+		setPlay(prevPlay => !prevPlay);
+	};
+
+	useEffect(() => {
+		const handleSpace = e => {
+			if (e.code === 'Space') handlePlay();
+		};
+		window.addEventListener('keydown', handleSpace);
+		return () => {
+			window.removeEventListener('keydown', handleSpace);
+		};
+	}, []);
+
+	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const importedData = await import(`./assets/${level}.json`);
 				setData(importedData.default);
 			} catch (error) {
-				console.log('Error loading JSON:', error)
-				setData([])
+				console.log('Error loading JSON:', error);
+				setData([]);
 			}
-		}
+		};
 		fetchData();
-	}, [level])
+	}, [level]);
+
+
+	const getWord = useCallback(() => {
+		const len = data.length;
+		setTango(data[Math.floor(Math.random() * len)]);
+	}, [data]);
+
 
 	useEffect(() => {
-		if (!data?.length) return;
-		const len = data.length;
-		const getWord = () => data[Math.floor(Math.random() * len)]
-		setTango(getWord());
+		let interval;
+		if (!data) return;
 		setShow(true);
-		const interval = setInterval(() => {
-			setTango(getWord());
-			setShow(true);
-			setTimeout(() => setShow(false), 7000)
-		}, 8000);
-		return () => clearInterval(interval);
-	}, [data])
+		if (play) {
+			interval = setInterval(() => {
+				setShow(false);
+				setTimeout(() => {
+					getWord();
+					setShow(true);
+				}, 1000);
+			}, speed * 1000);
+		}
+
+		return () => {
+			clearInterval(interval);
+		};
+	}, [data, play, level, speed, getWord]);
+
 
 	const handleSelect = (newLevel) => {
-		setLevel(newLevel)
-	}
+		getWord();
+		setLevel(newLevel);
+	};
+
+	const handleSlide = (value) => {
+		setSpeed(value);
+	};
+
 	return (
 		<>
-			<div className="absolute right-8 top-6 flex flex-col gap-4 p-4 bg-river-styx rounded-md text-center">
-				{[...Array(5)].map((_, i) => `n${i + 1}`).map(lvl => {
-					return <Level key={lvl} level={level} index={lvl} onclick={handleSelect} />
-				})}
+			<div className="absolute right-8 top-6 ">
+				<div className="flex flex-col gap-4 p-4 mb-6 bg-river-styx rounded-md text-center">
+					{[...Array(5)].map((_, i) => `n${i + 1}`).map(lvl => {
+						return <Level key={lvl} level={level} index={lvl} onclick={handleSelect} />;
+					})}
+					<hr className="border-steadfast"/>
+					<div className="bg-steadfast rounded-md p-1 hover:cursor-pointer" onClick={handlePlay}>
+						<img src={play ? Pause : Play} alt="Pause / Play icon" className="mx-auto" />
+					</div>
+				<Slider min={3}  max={10} step={1} value={speed} onChange={handleSlide} />
+				</div>
 			</div>
 			<div className={`transition-opacity duration-1000 ${show ? 'opacity-100' : 'opacity-0'}`}>
-				{!data && <h1>Loading</h1>}
+				{!data?.length === 0 && <h1>Loading</h1>}
 				<div className="font-util font-normal text-center text-7xl tracking-[0.5em] text-steadfast">
 					{tango.reading}
 				</div>
