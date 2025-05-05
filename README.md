@@ -1,13 +1,19 @@
 # Jisho-Slide
-- Shows different JLPT N1 words every 8 seconds.
+
+- Shows different JLPT words every few seconds.
 - All words are pulled from [jisho.org](https://jisho.org/) using its [API](https://jisho.org/forum/54fefc1f6e73340b1f160000-is-there-any-kind-of-search-api).
 - Uses `dev` theme from [monkeytype](https://monkeytype.com/).
 
-### Future Ideas
+## Implemented Features
+
 - [X] Options for different JLPT levels
-- [ ] Options for slide speed
+- [X] Options for slide speed
+- [X] Togglable Furigana
+- [X] Togglable word meaning
+- [X] Start/stop button (Press spacebar to toggle)
+- [X] Mobile support
+
+## Future Ideas
+
 - [ ] Options for different [Zen fonts](https://fonts.googleblog.com/2021/10/say-hello-to-our-big-new-japanese.html)
-- [ ] Togglable Furigana
-- [ ] Togglable word meaning 
-- [ ] Start stop button
-- [ ] Mobile support
+- [ ] More themes (You can open new **issue** to suggest more theme!)
