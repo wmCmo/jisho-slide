@@ -136,8 +136,6 @@ function App() {
 		};
 	}, [handlePlay, handleLeft, getWord]);
 
-	console.log(timeline.length);
-
 	return (
 		<>
 			<div className="absolute right-6 top-6 select-none z-10">
