@@ -16,6 +16,14 @@
     width: 20px;
     height: 20px;
     background: #23A9D5;
-    cursor: pointer;
+    cursor: grab;
     border-radius: 100px;
+}
+
+.slider::-webkit-slider-thumb:active {
+    cursor: grabbing
+}
+
+.active-fill {
+    fill: #23A9D5;
 }
