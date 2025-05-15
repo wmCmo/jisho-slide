@@ -111,12 +111,12 @@ function App() {
 					break;
 				case 'ArrowLeft':
 				case 'KeyA':
-					arrowLeft.classList.add('active-fill');
+					arrowLeft?.classList.add('active-fill');
 					handleLeft();
 					break;
 				case 'ArrowRight':
 				case 'KeyD':
-					arrowRight.classList.add('active-fill');
+					arrowRight?.classList.add('active-fill');
 					getWord();
 					break;
 				default:
@@ -125,7 +125,7 @@ function App() {
 		};
 
 		const handleKeyUp = () => {
-			[arrowLeft, arrowRight].forEach(arrow => arrow.classList.remove('active-fill'));
+			[arrowLeft, arrowRight].forEach(arrow => arrow?.classList.remove('active-fill'));
 		};
 
 		window.addEventListener('keydown', handleKeys);
