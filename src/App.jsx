@@ -108,7 +108,7 @@ function App() {
 			<div className={`transition-opacity duration-1000 ${show ? 'opacity-100' : 'opacity-0'}`}>
 				{!data?.length === 0 && <h1>Loading</h1>}
 				{showReading &&
-					<div className="font-util font-normal text-center text-4xl md:text-7xl tracking-[0.5em] text-steadfast">
+					<div className="font-util font-normal text-center text-4xl md:text-7xl md:tracking-[0.5em] text-steadfast">
 						{tango.reading}
 					</div>}
 				<div style={{
@@ -121,12 +121,12 @@ function App() {
 				{showSenses &&
 					<>
 						<hr className="mb-8 border-steadfast" />
-						<div className="flex flex-col md:flex-row gap-16 items-center text-left">
+						<div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center text-left">
 							<a className="px-8 py-4 bg-river-styx rounded-lg hover:text-battery-charged-blue hover:font-semibold transition duration-300 ease-in-out" role="button"
 								href={`https://jisho.org/search/${tango.word}`} target="_blank">Open
 								Jisho.org</a>
-							<div className="font-mono text-only-olive">
-								<ol className="list-decimal marker:text-battery-charged-blue">
+							<div className="font-mono text-only-olive ml-8 md:ml-0">
+								<ol className="list-decimal marker:text-battery-charged-blue ">
 									{data && tango.senses?.slice(0, 3).map((sense, idx) => <li key={idx}>{sense.slice(0, 3).join('; ')}</li>)}
 								</ol>
 							</div>
