@@ -12,8 +12,10 @@
 - [X] Togglable word meaning
 - [X] Start/stop button (Press spacebar to toggle)
 - [X] Mobile support
+- [X] Forward / backward control (A/D or Left arrow/Right arrow keys)
 
 ## Future Ideas
 
 - [ ] Options for different [Zen fonts](https://fonts.googleblog.com/2021/10/say-hello-to-our-big-new-japanese.html)
 - [ ] More themes (You can open new **issue** to suggest more theme!)
+- [ ] Stroke orders for Kanji
