@@ -139,14 +139,14 @@ function App() {
 
 	return (
 		<div className="">
-			<div className={`absolute left-6 top-6 select-none text-only-olive`} onClick={() => setShowInfo(prevShowInfo => !prevShowInfo)}>
+			<div className={`absolute left-6 top-6 select-none text-steadfast`} onClick={() => setShowInfo(prevShowInfo => !prevShowInfo)}>
 				<img className={`transform duration-300 ease-in-out ${showInfo ? "rotate-90" : "rotate-0"}`} src="./triangle.svg" alt="" />
 				<div className={`bg-river-styx px-4 py-2 mt-2 rounded-lg transition-all duration-300 ease-in-out ${showInfo ? "translate-0" : "-translate-y-5 opacity-0"}`}>
-					<div className="flex gap-2">
+					<div className="flex gap-1">
 						<img src="./code.svg" alt="" />
-						<a href="https://github.com/wmCmo/jisho-slide"><p className="hover:text-battery-charged-blue"><b>Code</b></p></a>
+						<a href="https://github.com/wmCmo/jisho-slide"><p className="hover:text-only-olive"><b>Code</b></p></a>
 					</div>
-					<div className="flex gap-2 mt-2">
+					<div className="flex gap-1 mt-2">
 						<img src="./info.svg" alt="" />
 						<a href="https://exzachly.notion.site/" target="_blank"><p className="hover:text-battery-charged-blue"><b>wmcmo</b></p></a>
 					</div>
