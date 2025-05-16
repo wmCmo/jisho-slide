@@ -197,7 +197,7 @@ function App() {
 								<hr className="mb-8 border-steadfast" />
 								<div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center text-left">
 									<a className="px-8 py-4 bg-river-styx rounded-lg hover:text-battery-charged-blue hover:font-semibold transition duration-300 ease-in-out" role="button"
-										href={`https://jisho.org/search/${tango.word}`} target="_blank">Open
+										href={`https://jisho.org/search/${tango.word}`} target="_blank" onClick={() => setPlay(false)}>Open
 										Jisho.org</a>
 									<div className="font-mono text-only-olive ml-8 md:ml-0">
 										<ol className="list-decimal marker:text-battery-charged-blue ">
