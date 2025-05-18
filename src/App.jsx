@@ -142,7 +142,8 @@ function App() {
 			<div className={`absolute left-6 top-6 select-none text-steadfast`} onClick={() => setShowInfo(prevShowInfo => !prevShowInfo)}>
 				<img className={`transform duration-300 ease-in-out ${showInfo ? "rotate-90" : "rotate-0"}`} src="./triangle.svg" alt="" />
 				<div className={`bg-river-styx px-4 py-2 mt-2 rounded-lg transition-all duration-300 ease-in-out ${showInfo ? "translate-0" : "-translate-y-5 opacity-0"}`}>
-					<div className="flex gap-1">
+					<a href="https://www.producthunt.com/posts/jisho-slides?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-jisho&#0045;slides" target="_blank"><img className="mt-2" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=966843&theme=neutral&t=1747506853455" alt="Jisho&#0032;Slides - Minimal&#0032;JLPT&#0032;Japanese&#0032;word&#0032;slideshow | Product Hunt" width="250px" height="54px" /></a>
+					<div className="flex gap-1 mt-4">
 						<img src="./code.svg" alt="" />
 						<a href="https://github.com/wmCmo/jisho-slide"><p className="hover:text-only-olive"><b>Code</b></p></a>
 					</div>
