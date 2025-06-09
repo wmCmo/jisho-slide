@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Level from "./Level";
 import Option from "./Option";
-import Pause from '/pause.svg';
-import Play from '/play.svg';
 import Slider from "./Slider";
 
 function App() {
@@ -162,10 +160,6 @@ function App() {
 						{[...Array(5)].map((_, i) => `n${i + 1}`).map(lvl => {
 							return <Level key={lvl} level={level} index={lvl} onclick={handleSelect} />;
 						})}
-						<hr className="border-coarse-wool border-4" />
-						<div className="bg-steadfast rounded-md p-1 hover:cursor-pointer" onClick={handlePlay}>
-							<img src={play ? Pause : Play} alt="Pause / Play icon" className="mx-auto" />
-						</div>
 						<Slider min={3} max={10} step={1} value={speed} onChange={handleSlide} />
 						<div className="bg-coarse-wool rounded-md p-1 hover:cursor-pointer" onClick={() => setShowArrows(prevShowArrows => !prevShowArrows)}>
 							<svg className={`${showArrows ? "fill-battery-charged-blue" : "fill-steadfast"} transition-colors duration-300 ease-in-out hover:fill-white`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4b5975" viewBox="0 0 256 256">
@@ -217,6 +211,20 @@ function App() {
 									<path
 										d="M200,48V208a8,8,0,0,1-13.66,5.66l-80-80a8,8,0,0,1,0-11.32l80-80A8,8,0,0,1,200,48ZM72,40a8,8,0,0,0-8,8V208a8,8,0,0,0,16,0V48A8,8,0,0,0,72,40Z"></path>
 								</svg>
+							</div>
+							<div className="bg-river-styx rounded-lg p-3" onClick={handlePlay}>
+								{
+									play ?
+										<svg className="hover:fill-battery-charged-blue transition-colors duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="#4b5975" viewBox="0 0 256 256">
+											<path
+												d="M216,48V208a16,16,0,0,1-16,16H160a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h40A16,16,0,0,1,216,48ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Z"></path>
+										</svg>
+										:
+										<svg className="hover:fill-battery-charged-blue transition-colors duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="#4b5975" viewBox="0 0 256 256">
+											<path
+												d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path>
+										</svg>
+								}
 							</div>
 							<div id="arrow-right" className="bg-river-styx rounded-lg p-3" onClick={getWord}>
 								<svg className="hover:fill-battery-charged-blue transition-colors duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="#4b5975" viewBox="0 0 256 256">
