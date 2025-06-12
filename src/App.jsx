@@ -118,6 +118,15 @@ function App() {
 					arrowRight?.classList.add('active-fill');
 					getWord();
 					break;
+				case 'KeyR':
+					setShowReading(prev => !prev);
+					break
+				case 'KeyM':
+					setShowSenses(prev => !prev);
+					break;
+				case 'KeyC':
+					setShowArrows(prev => !prev);
+					break;
 				default:
 					break;
 			}
