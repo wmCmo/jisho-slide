@@ -133,6 +133,9 @@ function App() {
 				case 'KeyF':
 					setKakuFont(prev => !prev);
 					break;
+				case 'Escape':
+					setShowMenu(prev => !prev);
+					break;
 				default:
 					break;
 			}
