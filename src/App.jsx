@@ -205,11 +205,11 @@ function App() {
 								`${25 - (tango.word.length * 2.5)}rem` :
 								`${12 - (tango.word.length * 2.5)}rem`
 						}} className={`text-8xl ${kakuFont ? 'font-kaku-gothic-new' : 'font-old-mincho'} font-black text-center text-only-olive mb-8`}>
-							{[...tango.word].map(char => {
-								if (KANA.includes(char) || !isNaN(typeof Number(char))) {
-									return <span key={char}>{char}</span>;
+							{[...tango.word].map((char, i) => {
+								if (KANA.includes(char) || /[0-9]/.test(char)) {
+									return <span key={char + i}>{char}</span>;
 								} else {
-									return <span key={char} className="hover:text-battery-charged-blue"><a href={`http://kakimashou.com/dictionary/character/${char}`} target="_blank">{char}</a></span>;
+									return <span key={char + i} className="hover:text-battery-charged-blue"><a href={`http://kakimashou.com/dictionary/character/${char}`} target="_blank" rel="noopener noreferrer">{char}</a></span>;
 								}
 							}
 							)}
@@ -219,7 +219,7 @@ function App() {
 								<hr className="mb-8 border-steadfast" />
 								<div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center text-left">
 									<a className="px-8 py-4 bg-river-styx rounded-lg hover:text-battery-charged-blue hover:font-semibold transition duration-300 ease-in-out" role="button"
-										href={`https://jisho.org/search/${tango.word}`} target="_blank" onClick={() => setPlay(false)}>Open
+										href={`https://jisho.org/search/${tango.word}`} target="_blank" rel="noopener noreferrer" onClick={() => setPlay(false)}>Open
 										Jisho.org</a>
 									<div className="font-mono text-only-olive ml-8 md:ml-0">
 										<ol className="list-decimal marker:text-battery-charged-blue ">
