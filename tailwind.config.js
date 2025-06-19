@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['Zen Old Mincho', 'serif'],
+        'old-mincho': ['Zen Old Mincho', 'serif'],
+        'kaku-gothic-new': ["Zen Kaku Gothic New", 'sans-serif'],
         'util': ['Inter', 'sans-serif']
       },
       fontSize: {

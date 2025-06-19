@@ -14,6 +14,7 @@ function App() {
 	const [showArrows, setShowArrows] = useState(true);
 	const [showReading, setShowReading] = useState(true);
 	const [showSenses, setShowSenses] = useState(false);
+	const [kakuFont, setKakuFont] = useState(false);
 	const [tango, setTango] = useState({
 		word: '言語',
 		reading: 'げんご',
@@ -120,7 +121,7 @@ function App() {
 					break;
 				case 'KeyR':
 					setShowReading(prev => !prev);
-					break
+					break;
 				case 'KeyM':
 					setShowSenses(prev => !prev);
 					break;
@@ -177,8 +178,10 @@ function App() {
 							</svg>
 						</div>
 						<hr className="border-coarse-wool border-4" />
-						<Option show={showReading} onClick={() => setShowReading(prevReading => !prevReading)} value="読" />
-						<Option show={showSenses} onClick={() => setShowSenses(prevSenses => !prevSenses)} value="意" />
+						<Option show={showReading} onClick={() => setShowReading(prev => !prev)} value="読" />
+						<Option show={showSenses} onClick={() => setShowSenses(prev => !prev)} value="意" />
+						<hr className="border-coarse-wool border-4" />
+						<Option show={kakuFont} onClick={() => setKakuFont(prev => !prev)} value="新" />
 					</div>
 				}
 			</div>
@@ -193,7 +196,7 @@ function App() {
 							fontSize: window.innerWidth >= 768 ?
 								`${25 - (tango.word.length * 2.5)}rem` :
 								`${12 - (tango.word.length * 2.5)}rem`
-						}} className="text-8xl font-display font-black text-center text-only-olive mb-8">
+						}} className={`text-8xl ${kakuFont ? 'font-kaku-gothic-new' : 'font-old-mincho'} font-black text-center text-only-olive mb-8`}>
 							{tango.word}
 						</div>
 						{showSenses &&
