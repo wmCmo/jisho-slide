@@ -3,6 +3,8 @@ import Level from "./Level";
 import Option from "./Option";
 import Slider from "./Slider";
 
+const KANA = "あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよゃゅょらりるれろわをんゎっアイウエオカキクケコガギグゲゴサシスセソザジズゼゾタチツテトダヂヅデドナニヌネノハヒフヘホバビブベボパピプペポマミムメモヤユヨャュョラリルレロワヲンヮーッ-";
+
 function App() {
 	const [level, setLevel] = useState('n1');
 	const [data, setData] = useState([]);
@@ -128,6 +130,9 @@ function App() {
 				case 'KeyC':
 					setShowArrows(prev => !prev);
 					break;
+				case 'KeyF':
+					setKakuFont(prev => !prev);
+					break;
 				default:
 					break;
 			}
@@ -197,7 +202,14 @@ function App() {
 								`${25 - (tango.word.length * 2.5)}rem` :
 								`${12 - (tango.word.length * 2.5)}rem`
 						}} className={`text-8xl ${kakuFont ? 'font-kaku-gothic-new' : 'font-old-mincho'} font-black text-center text-only-olive mb-8`}>
-							{tango.word}
+							{[...tango.word].map(char => {
+								if (KANA.includes(char) || !isNaN(typeof Number(char))) {
+									return <span key={char}>{char}</span>;
+								} else {
+									return <span key={char} className="hover:text-battery-charged-blue"><a href={`http://kakimashou.com/dictionary/character/${char}`} target="_blank">{char}</a></span>;
+								}
+							}
+							)}
 						</div>
 						{showSenses &&
 							<>
