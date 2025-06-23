@@ -44,11 +44,6 @@ function App() {
 	const [timeline, setTimeline] = useState([Math.floor(Math.random() * 100)]);
 	const [position, setPosition] = useState(0);
 
-	useEffect(() => {
-		setTimeline([Math.floor(Math.random() * 100)]);
-		setPosition(0);
-	}, [data]);
-
 	const getWord = useCallback(() => {
 		const len = data.length;
 		const index = Math.floor(Math.random() * len);
@@ -62,6 +57,16 @@ function App() {
 			return newPosition;
 		});
 	}, [data, timeline]);
+
+	useEffect(() => {
+		setTimeline([Math.floor(Math.random() * 100)]);
+		if (data.length > 0) {
+			const firstIndex = Math.floor(Math.random() * data.length);
+			setTimeline([firstIndex]);
+			setPosition(0);
+			setTango(data[firstIndex]);
+		}
+	}, [data]);
 
 	useEffect(() => {
 		let interval;
@@ -82,16 +87,6 @@ function App() {
 		};
 	}, [data, play, level, speed, getWord]);
 
-
-	const handleSelect = (newLevel) => {
-		getWord();
-		setLevel(newLevel);
-	};
-
-	const handleSlide = (value) => {
-		setSpeed(value);
-	};
-
 	const handleLeft = useCallback(() => {
 		if (position > 0) {
 			setPosition(prevPosition => {
@@ -107,7 +102,11 @@ function App() {
 		const arrowRight = document.getElementById('arrow-right');
 
 		const handleKeys = e => {
-			switch (e.code) {
+			const code = e.code;
+			if (/^Digit[1-5]$/.test(code)) {
+				setLevel('n' + code.substr(-1));
+			}
+			switch (code) {
 				case 'Space':
 					handlePlay();
 					break;
@@ -132,6 +131,9 @@ function App() {
 					break;
 				case 'KeyF':
 					setKakuFont(prev => !prev);
+					break;
+				case 'KeyY':
+					setLevel('熟');
 					break;
 				case 'Escape':
 					setShowMenu(prev => !prev);
@@ -174,11 +176,12 @@ function App() {
 					<img src="./menu.svg" alt="hamburger" width="30px" height="30px" />
 				</div>
 				{showMenu &&
-					<div className="flex flex-col gap-4 p-4 mb-4 bg-river-styx rounded-xl text-center">
+					<div className="flex flex-col gap-3 p-4 mb-4 bg-river-styx rounded-xl text-center font-kaku-gothic-new font-medium">
 						{[...Array(5)].map((_, i) => `n${i + 1}`).map(lvl => {
-							return <Level key={lvl} level={level} index={lvl} onclick={handleSelect} />;
+							return <Level key={lvl} level={level} index={lvl} onclick={setLevel} />;
 						})}
-						<Slider min={3} max={10} step={1} value={speed} onChange={handleSlide} />
+						<Level level={level} index={'熟'} onclick={setLevel} />
+						<Slider min={3} max={10} step={1} value={speed} onChange={setSpeed} />
 						<div className="bg-coarse-wool rounded-md p-1 hover:cursor-pointer" onClick={() => setShowArrows(prevShowArrows => !prevShowArrows)}>
 							<svg className={`${showArrows ? "fill-battery-charged-blue" : "fill-steadfast"} transition-colors duration-300 ease-in-out hover:fill-white`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4b5975" viewBox="0 0 256 256">
 								<path
