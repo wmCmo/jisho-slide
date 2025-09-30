@@ -158,22 +158,22 @@ function App() {
 	return (
 		<div className="">
 			<div className={`absolute left-6 top-6 select-none text-steadfast`}>
-				<img onClick={() => setShowInfo(prevShowInfo => !prevShowInfo)} className={`transform duration-300 ease-in-out cursor-pointer ${showInfo ? "rotate-90" : "rotate-0"}`} src="./triangle.svg" alt="" />
+				<img onClick={() => setShowInfo(prevShowInfo => !prevShowInfo)} className={`transform duration-300 ease-in-out cursor-pointer ${showInfo ? "rotate-90" : "rotate-0"}`} src="./triangle.svg" alt="information toggle" title="Information" />
 				<div className={`bg-river-styx px-4 py-2 mt-2 rounded-lg transition-all duration-300 ease-in-out ${showInfo ? "translate-0" : "-translate-y-5 opacity-0"}`}>
 					<a className={!showInfo ? 'pointer-events-none' : ''} href="https://www.producthunt.com/posts/jisho-slides?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-jisho&#0045;slides" target="_blank"><img className="mt-2" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=966843&theme=neutral&t=1747506853455" alt="Jisho&#0032;Slides - Minimal&#0032;JLPT&#0032;Japanese&#0032;word&#0032;slideshow | Product Hunt" width="250px" height="54px" /></a>
 					<div className="flex gap-1 mt-4">
-						<img src="./code.svg" alt="" />
+						<img src="./code.svg" alt="programming icon" />
 						<a className={!showInfo ? 'pointer-events-none' : ''} href="https://github.com/wmCmo/jisho-slide" target="_blank"><p className="hover:text-only-olive"><b>Code</b></p></a>
 					</div>
 					<div className="flex gap-1 mt-2">
-						<img src="./info.svg" alt="" />
+						<img src="./info.svg" alt="information icon" />
 						<a className={!showInfo ? 'pointer-events-none' : ''} href="https://exzachly.notion.site/" target="_blank"><p className="hover:text-battery-charged-blue"><b>wmcmo</b></p></a>
 					</div>
 				</div>
 			</div>
 			<div className="absolute right-6 top-6 select-none z-10">
 				<div className="flex justify-center p-4 mb-4 bg-river-styx rounded-xl cursor-pointer" onClick={() => { setShowMenu(prevShowMenu => !prevShowMenu); }}>
-					<img src="./menu.svg" alt="hamburger" width="30px" height="30px" />
+					<img src="./menu.svg" alt="hamburger icon" title="Key: ESC" width="30px" height="30px" />
 				</div>
 				{showMenu &&
 					<div className="flex flex-col gap-3 p-4 mb-4 bg-river-styx rounded-xl text-center font-kaku-gothic-new font-medium">
@@ -182,7 +182,7 @@ function App() {
 						})}
 						<Level level={level} index={'熟'} onclick={setLevel} />
 						<Slider min={3} max={10} step={1} value={speed} onChange={setSpeed} />
-						<div className="bg-coarse-wool rounded-md p-1 hover:cursor-pointer" onClick={() => setShowArrows(prevShowArrows => !prevShowArrows)}>
+						<div title="Key: C" className="bg-coarse-wool rounded-md p-1 hover:cursor-pointer" onClick={() => setShowArrows(prevShowArrows => !prevShowArrows)}>
 							<svg className={`${showArrows ? "fill-battery-charged-blue" : "fill-steadfast"} transition-colors duration-300 ease-in-out hover:fill-white`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4b5975" viewBox="0 0 256 256">
 								<path
 									d="M104,128a8,8,0,0,1-8,8H56v24a8,8,0,0,1-13.66,5.66l-32-32a8,8,0,0,1,0-11.32l32-32A8,8,0,0,1,56,96v24H96A8,8,0,0,1,104,128Zm141.66-5.66-32-32A8,8,0,0,0,200,96v24H160a8,8,0,0,0,0,16h40v24a8,8,0,0,0,13.66,5.66l32-32A8,8,0,0,0,245.66,122.34ZM128,32a8,8,0,0,0-8,8V216a8,8,0,0,0,16,0V40A8,8,0,0,0,128,32Z"></path>
@@ -236,13 +236,13 @@ function App() {
 					{
 						showArrows &&
 						<div className="mt-16 flex justify-center gap-8 cursor-pointer">
-							<div className="bg-river-styx rounded-lg p-3" onClick={handleLeft}>
+							<div title='Key: A/←' className="bg-river-styx rounded-lg p-3" onClick={handleLeft}>
 								<svg id="arrow-left" className="hover:fill-battery-charged-blue transition-colors duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="#4b5975" viewBox="0 0 256 256">
 									<path
 										d="M200,48V208a8,8,0,0,1-13.66,5.66l-80-80a8,8,0,0,1,0-11.32l80-80A8,8,0,0,1,200,48ZM72,40a8,8,0,0,0-8,8V208a8,8,0,0,0,16,0V48A8,8,0,0,0,72,40Z"></path>
 								</svg>
 							</div>
-							<div className="bg-river-styx rounded-lg p-3" onClick={handlePlay}>
+							<div title="Key: Space" className="bg-river-styx rounded-lg p-3" onClick={handlePlay}>
 								{
 									play ?
 										<svg className="hover:fill-battery-charged-blue transition-colors duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="#4b5975" viewBox="0 0 256 256">
@@ -256,7 +256,7 @@ function App() {
 										</svg>
 								}
 							</div>
-							<div id="arrow-right" className="bg-river-styx rounded-lg p-3" onClick={getWord}>
+							<div title='Key: D/→' id="arrow-right" className="bg-river-styx rounded-lg p-3" onClick={getWord}>
 								<svg className="hover:fill-battery-charged-blue transition-colors duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="#4b5975" viewBox="0 0 256 256">
 									<path
 										d="M149.66,122.34a8,8,0,0,1,0,11.32l-80,80A8,8,0,0,1,56,208V48a8,8,0,0,1,13.66-5.66ZM184,40a8,8,0,0,0-8,8V208a8,8,0,0,0,16,0V48A8,8,0,0,0,184,40Z"></path>
